@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+/* Base Light Theme Gradient */
+.app-container {
+  @apply min-h-screen bg-no-repeat bg-cover transition-colors duration-500 ease-in-out;
+  background-image: linear-gradient(135deg, theme('colors.lightBgLeft') 0%, theme('colors.lightBgBottom') 100%);
+}
+
+/* Dark Theme Gradient via .dark class */
+.dark .app-container {
+  background-image: linear-gradient(135deg, theme('colors.darkBgLeft') 0%, theme('colors.darkBgBottom') 100%);
+}
