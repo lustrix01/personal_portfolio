@@ -82,10 +82,9 @@ const About = () => {
   ];
 
   return (
-    // The id="about" is crucial here so the Header navigation link works!
     <section
       id="about"
-      className="relative py-20 px-8 md:px-24 min-h-screen flex items-center justify-center max-w-[1600px] mx-auto overflow-hidden"
+      className="relative py-20 px-8 md:px-24 min-h-screen flex items-center justify-center max-w-[1600px] mx-auto overflow-hidden scroll-mt-20"
     >
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
@@ -99,30 +98,34 @@ const About = () => {
             onMouseLeave={handleMouseLeave}
             style={{
               transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-              transition: "transform 0.1s ease-out", // Smooth snappy tracking
+              transition: "transform 0.1s ease-out",
             }}
             className="relative w-full max-w-[400px] aspect-[4/5] rounded-3xl p-[1px] bg-gradient-to-br from-sky-400/50 via-indigo-500/20 to-transparent group hover:shadow-2xl hover:shadow-indigo-500/20"
           >
             {/* Inner Card Content */}
             <div className="w-full h-full rounded-3xl bg-white/40 dark:bg-slate-900/60 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 p-8 flex flex-col items-center justify-end relative overflow-hidden transition-all duration-500">
-              {/* Optional: Add an image inside the card later */}
+              {/* FIXED IMAGE PATH FOR VERCEL: Ensure sense.jpg is in your 'public' folder */}
               <img
-                src="/src/assets/sense.jpg"
-                className="absolute top-0 w-full h-full object-cover opacity-50"
+                src="/sense.jpg"
+                alt="Profile"
+                className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500"
               />
 
-              <div className="absolute top-8 left-8 p-3 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white shadow-lg transform group-hover:scale-110 transition-transform duration-500">
+              {/* Gradient overlay to make text readable */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent pointer-events-none"></div>
+
+              <div className="absolute top-8 left-8 p-3 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white shadow-lg transform group-hover:scale-110 transition-transform duration-500 z-10">
                 <GraduationCap size={32} />
               </div>
 
               <div className="relative z-10 w-full text-left mt-auto transform transition-transform duration-500 group-hover:translate-y-[-10px]">
-                <h3 className="text-3xl font-black text-accentLight dark:text-accentDark mb-1 tracking-tight">
+                <h3 className="text-3xl font-black text-white mb-1 tracking-tight">
                   Owhie Lumbang
                 </h3>
-                <p className="text-sky-600 dark:text-sky-400 font-semibold tracking-wide uppercase text-sm mb-3">
+                <p className="text-sky-400 font-semibold tracking-wide uppercase text-sm mb-3">
                   Information Technology
                 </p>
-                <div className="flex items-center gap-2 text-accentLight/70 dark:text-accentDark/70 font-medium">
+                <div className="flex items-center gap-2 text-white/70 font-medium">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                   Bicol University
                 </div>
@@ -157,7 +160,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Interactive Skills Grid */}
+          {/* Interactive Technical Arsenal Grid */}
           <div className="mt-4">
             <h3 className="text-sm font-semibold tracking-[0.2em] text-accentLight/50 dark:text-accentDark/50 uppercase mb-6">
               Technical Arsenal
