@@ -9,7 +9,7 @@ const Contact = () => {
     setStatus("SENDING");
     const form = e.target;
 
-    const response = await fetch("https://formspree.io/f/xkopjbpe", {
+    const response = await fetch("https://formspree.io/f/xjygaznk", {
       method: "POST",
       body: new FormData(form),
       headers: {
@@ -47,19 +47,22 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full max-w-5xl items-center">
           {/* Left Side: Professional Info Cards */}
           <div className="flex flex-col justify-center space-y-4 md:space-y-5">
-            <div className="flex items-center gap-5 p-4 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/90 dark:border-white/10 hover:border-sky-500/30 transition-all shadow-xs">
-              <div className="p-3 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20">
+            <a
+              href="mailto:osl2023-5510-65059@bicol-u.edu.ph"
+              className="flex items-center gap-5 p-4 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/90 dark:border-white/10 hover:border-sky-500/50 hover:bg-sky-500/5 transition-all shadow-xs group"
+            >
+              <div className="p-3 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20 group-hover:scale-110 transition-transform">
                 <Mail size={22} />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-accentLight dark:text-accentDark">
+                <h4 className="text-sm font-bold text-accentLight dark:text-accentDark group-hover:text-sky-500 transition-colors">
                   Email Me
                 </h4>
                 <p className="text-xs text-accentLight/60 dark:text-accentDark/60 tracking-wide">
-                  owhielumbang111@gmail.com
+                  osl2023-5510-65059@bicol-u.edu.ph
                 </p>
               </div>
-            </div>
+            </a>
 
             <div className="flex items-center gap-5 p-4 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/90 dark:border-white/10 hover:border-indigo-500/30 transition-all shadow-xs">
               <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">

@@ -90,7 +90,7 @@ const Hero = () => {
         result = "Opening Owhie's Resume (Lumbang_Resume.pdf)... 📄";
         break;
       case "contact":
-        result = "Email: owhielumbang111@gmail.com | GitHub: github.com/lustrix01";
+        result = "Email: osl2023-5510-65059@bicol-u.edu.ph | GitHub: github.com/lustrix01";
         break;
       case "sudo":
         result = "Permission denied. Hire me first to get root access! 😉";

@@ -77,7 +77,7 @@ export const socials = [
   },
   {
     name: "Email",
-    url: "mailto:owhielumbang111@gmail.com",
+    url: "mailto:osl2023-5510-65059@bicol-u.edu.ph",
     icon: Mail,
     hover:
       "hover:text-sky-500 hover:drop-shadow-[0_0_8px_rgba(14,165,233,0.8)]",
