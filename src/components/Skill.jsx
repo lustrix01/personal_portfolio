@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import {
   Code2,
   Layout,
-  Server,
-  Braces,
+  FileCode2,
   Database,
-  Cpu,
-  BrainCircuit,
+  Network,
+  Server,
   Layers,
 } from "lucide-react";
 
@@ -18,74 +17,65 @@ const skillsData = [
     color: "text-sky-400",
     border: "hover:border-sky-400/50",
     bg: "hover:bg-sky-400/10",
-    desc: "Building dynamic, component-driven UIs for complex web applications like IskoMart and TracePad.",
+    desc: "My go-to frontend library. Used it to build dynamic state-driven components, manage user sessions, and create interactive UI for IskoMart and school projects.",
   },
   {
-    name: "Tailwind CSS & DaisyUI",
+    name: "Tailwind CSS",
     category: "Frontend",
     icon: Layout,
     color: "text-teal-400",
     border: "hover:border-teal-400/50",
     bg: "hover:bg-teal-400/10",
-    desc: "Rapid utility-first styling, creating highly responsive and modern user interfaces.",
+    desc: "How I style almost everything I build. Helps me prototype clean, responsive layouts quickly while keeping dark mode and mobile views consistent without messy CSS.",
   },
   {
-    name: "PHP & Laravel",
+    name: "PHP",
     category: "Backend",
-    icon: Server,
-    color: "text-red-400",
-    border: "hover:border-red-400/50",
-    bg: "hover:bg-red-400/10",
-    desc: "Architecting secure server-side logic, routing, and robust MVC web applications.",
+    icon: FileCode2,
+    color: "text-indigo-400",
+    border: "hover:border-indigo-400/50",
+    bg: "hover:bg-indigo-400/10",
+    desc: "The core backend language from our college curriculum. Used it to write server-side scripts, handle form validations, manage sessions, and connect to databases.",
   },
   {
-    name: "Node.js & Express",
-    category: "Backend",
-    icon: Braces,
-    color: "text-green-400",
-    border: "hover:border-green-400/50",
-    bg: "hover:bg-green-400/10",
-    desc: "Developing scalable, event-driven JavaScript backend services and RESTful APIs.",
-  },
-  {
-    name: "MySQL",
+    name: "MySQL & PostgreSQL",
     category: "Database",
     icon: Database,
     color: "text-blue-400",
     border: "hover:border-blue-400/50",
     bg: "hover:bg-blue-400/10",
-    desc: "Designing relational databases, writing complex queries, and setting up automated triggers.",
+    desc: "Hands-on experience from database coursework. Comfortable writing CRUD queries, JOINs, and designing relational table structures with primary/foreign keys.",
   },
   {
-    name: "Python",
-    category: "Specialty",
-    icon: Cpu,
-    color: "text-yellow-400",
-    border: "hover:border-yellow-400/50",
-    bg: "hover:bg-yellow-400/10",
-    desc: "Writing efficient scripts for automation, data processing, and backend integrations.",
+    name: "Basic Networking",
+    category: "IT & Systems",
+    icon: Network,
+    color: "text-amber-400",
+    border: "hover:border-amber-400/50",
+    bg: "hover:bg-amber-400/10",
+    desc: "Learned through our IT laboratory subjects and Cisco Packet Tracer. Familiar with IP subnetting, LAN configuration, TCP/IP, and basic switch/router setup.",
   },
   {
-    name: "Machine Learning",
-    category: "Specialty",
-    icon: BrainCircuit,
-    color: "text-rose-400",
-    border: "hover:border-rose-400/50",
-    bg: "hover:bg-rose-400/10",
-    desc: "Applying predictive models, including Naive Bayes classifiers and linear regression calculations.",
+    name: "Basic System Admin",
+    category: "IT & Systems",
+    icon: Server,
+    color: "text-emerald-400",
+    border: "hover:border-emerald-400/50",
+    bg: "hover:bg-emerald-400/10",
+    desc: "Comfortable using the Linux terminal, managing user permissions, installing service packages, and setting up local development environments.",
   },
   {
     name: "UI/UX Design",
-    category: "Specialty",
+    category: "Design",
     icon: Layers,
     color: "text-fuchsia-400",
     border: "hover:border-fuchsia-400/50",
     bg: "hover:bg-fuchsia-400/10",
-    desc: "Drafting wireframes, mockups, and ensuring seamless, accessible user journeys.",
+    desc: "I care a lot about visual hierarchy and clean spacing. I like wireframing layout flows and picking clear typography before writing code.",
   },
 ];
 
-const categories = ["All", "Frontend", "Backend", "Database", "Specialty"];
+const categories = ["All", "Frontend", "Backend", "Database", "IT & Systems", "Design"];
 
 const Skill = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -96,33 +86,34 @@ const Skill = () => {
       : skillsData.filter((skill) => skill.category === activeFilter);
 
   return (
-    // Reduced py-24 to py-12 and removed overflow-hidden to prevent clipping
     <section
       id="skill"
-      className="relative py-12 md:py-16 px-6 md:px-16 min-h-screen flex flex-col items-center justify-center max-w-[1400px] mx-auto"
+      className="relative py-6 md:py-8 px-6 md:px-16 min-h-[calc(100vh-72px)] flex flex-col items-center justify-center max-w-[1400px] mx-auto scroll-mt-[72px]"
     >
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-500/5 dark:bg-sky-500/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-      {/* Section Header */}
-      <div className="flex flex-col items-center gap-3 mb-10 text-center z-10">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
-          Technical Expertise
+      <div className="w-full flex flex-col items-center -translate-y-6 md:-translate-y-10 z-10">
+        {/* Section Header (Unified Modern Eyebrow Design) */}
+      <div className="flex flex-col items-center gap-1.5 mb-5 md:mb-6 text-center z-10">
+        <span className="text-xs font-semibold tracking-[0.2em] text-sky-600 dark:text-sky-400 uppercase">
+          Technical Arsenal
+        </span>
+        <h2 className="text-2xl md:text-4xl font-extrabold text-accentLight dark:text-accentDark tracking-tight">
+          Skills & Tools
         </h2>
-        <div className="h-1 w-20 bg-indigo-500 rounded-full mb-2"></div>
-        <p className="max-w-2xl text-accentLight/70 dark:text-accentDark/70 text-base md:text-lg font-light">
-          A comprehensive overview of the languages, frameworks, and tools I use
-          to bring digital products to life from the server to the browser.
+        <p className="max-w-xl text-accentLight/70 dark:text-accentDark/70 text-xs md:text-sm font-light mt-0.5">
+          A realistic overview of technologies and foundational IT concepts I've learned through academic coursework and practical projects.
         </p>
       </div>
 
       {/* Interactive Filter Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10 z-10">
+      <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-7 z-10">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveFilter(category)}
-            className={`px-5 py-2 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 transform hover:scale-105
+            className={`px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 transform hover:scale-105
               ${
                 activeFilter === category
                   ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-indigo-500/30"
@@ -135,7 +126,7 @@ const Skill = () => {
       </div>
 
       {/* Skills Grid - Adjusted gap and padding for better screen fit */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-4 w-full z-10">
         {filteredSkills.map((skill, index) => {
           const Icon = skill.icon;
           return (
@@ -173,6 +164,7 @@ const Skill = () => {
             </div>
           );
         })}
+      </div>
       </div>
 
       <style

@@ -55,7 +55,7 @@ function App() {
   }, [inputSequence, isHackerMode]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-black outline-none">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#ebf3fb] dark:bg-black outline-none">
       {/* 1. Floating Sidebar: Appears on scroll down */}
       <FloatingSidebar />
 
@@ -64,7 +64,7 @@ function App() {
         ${isHackerMode ? "opacity-20 grayscale sepia hue-rotate-[70deg] saturate-[5] blur-[2px]" : "opacity-100"}`}
       >
         {/* Sticky Header */}
-        <div className="sticky top-0 z-50 bg-inherit backdrop-blur-md">
+        <div className="sticky top-0 z-50 h-[72px] bg-[#ebf3fb]/75 dark:bg-slate-900/80 backdrop-blur-md border-b border-sky-900/5 dark:border-white/5 flex items-center">
           <Header />
         </div>
 

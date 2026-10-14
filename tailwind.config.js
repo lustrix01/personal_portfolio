@@ -8,8 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        lightBgLeft: '#E0F7FA', 
-        lightBgBottom: '#F1E0FC', 
+        lightBg: '#F8FAFC',
+        lightBgLeft: '#F8FAFC', 
+        lightBgBottom: '#F8FAFC', 
         darkBgLeft: '#101D38', 
         darkBgBottom: '#1C2A4F', 
         accentLight: '#2D325A', 

@@ -1,8 +1,8 @@
-import React from "react";
-import { ExternalLink, ShoppingCart, Camera, Flower2 } from "lucide-react";
+import React, { useState } from "react";
+import { ExternalLink } from "lucide-react";
 
-// Custom SVG for GitHub since Lucide removed it
-const GithubIcon = ({ className, size = 20, strokeWidth = 2 }) => (
+// Custom SVG for GitHub
+const GithubIcon = ({ className, size = 16, strokeWidth = 2 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -22,109 +22,178 @@ const GithubIcon = ({ className, size = 20, strokeWidth = 2 }) => (
 
 const projectsData = [
   {
-    title: "IskoMart",
+    title: "DentiSys",
+    subtitle: "Academic Grading and Retention Monitoring System",
+    role: "Project Leader | Frontend and Backend Developer",
+    category: "Academic Systems",
+    badge: "Academic System",
     description:
-      "A full-stack e-commerce app with merchant systems and dynamic product cataloging.",
-    icon: ShoppingCart,
+      "A web-based system built for BU College of Dental Medicine to monitor student grading performance and retention status.",
+    liveUrl: "https://52-76-5-164.sslip.io",
+    githubUrl: "https://github.com/lustrix01",
+    techStack: ["React", "Tailwind CSS", "REST API", "Cloud Hosted"],
+  },
+  {
+    title: "IskoMart",
+    subtitle: "Web-Based Marketplace System",
+    role: "Project Leader | Frontend Developer",
+    category: "Academic Systems",
+    badge: "Academic System",
+    description:
+      "A campus e-commerce platform built to support student merchants with item catalogs, cart management, and responsive UI.",
     liveUrl: "https://iskotmart-frontend.vercel.app/",
-    techStack: ["React", "Node.js", "MySQL"],
-    color: "from-blue-500 to-cyan-500",
-    glow: "group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]",
+    githubUrl: "https://github.com/lustrix01",
+    techStack: ["React", "Tailwind CSS", "MySQL", "REST API"],
   },
   {
     title: "Pike-mon Booth",
+    subtitle: "Interactive Web Photo Booth",
+    role: "Personal Project · Creator",
+    category: "Personal & Creative",
+    badge: "Personal Project",
     description:
-      "An interactive themed web experience with smooth UI animations and booth interface.",
-    icon: Camera,
+      "A playful Pokémon-themed web photo booth featuring live webcam capture, custom photo strip layout, and instant downloads.",
     liveUrl: "https://pike-mon-booth.vercel.app/",
-    techStack: ["React", "CSS", "Vite"],
-    color: "from-yellow-400 to-red-500",
-    glow: "group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]",
+    githubUrl: "https://github.com/lustrix01",
+    techStack: ["React", "CSS Animations", "Vite"],
   },
   {
     title: "Flower Card",
+    subtitle: "Interactive Digital Greeting Card",
+    role: "Personal Project · Creator",
+    category: "Personal & Creative",
+    badge: "Personal Project",
     description:
-      "A digital card application demonstrating creative UI/UX and state management.",
-    icon: Flower2,
+      "A digital greeting card project crafted with micro-interactions and tactile animations for sending warm virtual notes.",
     liveUrl: "https://flower-card-one.vercel.app/",
-    techStack: ["React", "Framer Motion"],
-    color: "from-pink-500 to-rose-500",
-    glow: "group-hover:shadow-[0_0_20px_rgba(244,63,94,0.3)]",
+    githubUrl: "https://github.com/lustrix01",
+    techStack: ["React", "Framer Motion", "Tailwind CSS"],
   },
 ];
 
+const categories = ["All Projects", "Academic Systems", "Personal & Creative"];
+
 const Project = () => {
+  const [activeCategory, setActiveCategory] = useState("All Projects");
+
+  const filteredProjects =
+    activeCategory === "All Projects"
+      ? projectsData
+      : projectsData.filter((p) => p.category === activeCategory);
+
   return (
     <section
       id="project"
-      className="relative py-12 px-6 md:px-16 min-h-screen flex flex-col items-center justify-center max-w-[1200px] mx-auto z-10"
+      className="relative py-6 md:py-8 px-6 md:px-12 min-h-[calc(100vh-72px)] flex flex-col items-center justify-center max-w-[1200px] mx-auto z-10 scroll-mt-[72px]"
     >
-      {/* Header - Made more compact */}
-      <div className="flex flex-col items-center gap-2 mb-10 text-center z-10">
-        <h2 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
+      {/* Background ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/5 dark:bg-indigo-500/5 rounded-full blur-[90px] -z-10 pointer-events-none"></div>
+
+      <div className="w-full flex flex-col items-center -translate-y-6 md:-translate-y-10 z-10">
+        {/* Header - Unified Eyebrow Style */}
+      <div className="flex flex-col items-center gap-1.5 mb-5 text-center z-10">
+        <span className="text-xs font-semibold tracking-[0.2em] text-sky-600 dark:text-sky-400 uppercase">
+          Portfolio & Works
+        </span>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-accentLight dark:text-accentDark tracking-tight">
           Featured Projects
         </h2>
-        <div className="h-1 w-16 bg-indigo-500 rounded-full"></div>
+        <p className="max-w-lg text-accentLight/70 dark:text-accentDark/70 text-xs md:text-sm font-light mt-0.5">
+          Academic systems and creative personal projects I've built and deployed.
+        </p>
       </div>
 
-      {/* Projects Grid - Optimized spacing */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-        {projectsData.map((project, index) => {
-          const Icon = project.icon;
-          return (
-            <div
-              key={project.title}
-              className={`group relative flex flex-col rounded-3xl bg-white/30 dark:bg-slate-900/40 backdrop-blur-md border border-white/10 dark:border-slate-800/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 ${project.glow}`}
-            >
-              {/* Card Banner */}
-              <div
-                className={`w-full h-32 bg-gradient-to-br ${project.color} flex items-center justify-center relative`}
-              >
-                <Icon className="w-12 h-12 text-white drop-shadow-lg group-hover:scale-110 transition-transform duration-500" />
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap justify-center gap-2 mb-6 z-10">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`px-3.5 py-1 rounded-full text-xs font-medium tracking-wide transition-all duration-200
+              ${
+                activeCategory === cat
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm"
+                  : "bg-white/60 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800"
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Projects Grid - Ultra-clean, Compact 2x2 Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 w-full max-w-3xl z-10">
+        {filteredProjects.map((project) => (
+          <div
+            key={project.title}
+            className="group flex flex-col justify-between rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-800/90 p-3.5 sm:p-4 transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm"
+          >
+            <div>
+              {/* Header: Title + Role + Live Status */}
+              <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <h3 className="text-sm sm:text-base font-bold text-accentLight dark:text-accentDark tracking-tight">
+                      {project.title}
+                    </h3>
+                    <span className="text-[10px] font-semibold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/60 border border-sky-200/50 dark:border-sky-800/50 px-1.5 py-0.2 rounded">
+                      {project.role}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Live
+                </span>
               </div>
 
-              {/* Card Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-accentLight dark:text-accentDark mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-accentLight/70 dark:text-accentDark/70 font-light mb-4 line-clamp-2">
-                  {project.description}
-                </p>
+              {/* Caption - Short, Readable, Complete */}
+              <p className="text-[11px] sm:text-xs text-accentLight/70 dark:text-accentDark/70 font-light leading-relaxed my-2">
+                {project.description}
+              </p>
 
-                {/* Tech Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] px-2 py-0.5 rounded-md bg-white/20 dark:bg-white/5 border border-white/10 text-accentLight/60 dark:text-accentDark/60 font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center gap-3 mt-auto">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r ${project.color} text-white text-sm font-bold shadow-md hover:brightness-110 transition-all`}
+              {/* Tech Stack Chips */}
+              <div className="flex flex-wrap gap-1 mb-3">
+                {project.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium"
                   >
-                    Live <ExternalLink size={14} strokeWidth={3} />
-                  </a>
-                  <a
-                    href="#"
-                    className="p-2.5 rounded-xl bg-white/10 dark:bg-slate-800 text-accentLight dark:text-accentDark hover:bg-white/20 transition-all"
-                  >
-                    <GithubIcon size={18} />
-                  </a>
-                </div>
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          );
-        })}
+
+            {/* Actions Footer */}
+            <div className="flex items-center gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800/80">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-950 text-xs font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors"
+              >
+                <span>Live Demo</span>
+                <ExternalLink size={11} />
+              </a>
+
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View GitHub Repository"
+                className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700/80 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                <GithubIcon size={14} />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
       </div>
     </section>
   );
